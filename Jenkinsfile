@@ -3,10 +3,16 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                echo "Clarusway_Way to Reinvent Yourself"
-                sh 'echo using shell within Jenkinsfile'
+                echo 'Compiling the java source code'
+                sh 'javac Hello.java'
                 echo 'not using shell in the Jenkinsfile'
             }
         }
-    }
-}
+	stage('run') {
+	    steps {
+	        echo 'Running the compiled java code.'
+		sh 'java Hello'
+	    }
+	}
+     }
+ }
